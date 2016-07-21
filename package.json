@@ -14,6 +14,10 @@
   "author": "RSAC_AppDev/aashislamsal",
   "license": "ISC",
   "dependencies": {
-    "express": "~4.14.0"
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "express": "~4.14.0",
+    "lodash": "^4.13.1",
+    "pg-promise": "~5.2.4"
   }
 }
