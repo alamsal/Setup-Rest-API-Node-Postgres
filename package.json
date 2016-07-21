@@ -1,0 +1,19 @@
+{
+  "name": "ImgAndArcServerStat_NodeApplication",
+  "version": "1.0.0",
+  "description": "Displays Image server and Arc server statistics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Arc server",
+    "Image server",
+    "Statistics"
+  ],
+  "author": "RSAC_AppDev/aashislamsal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.14.0"
+  }
+}
