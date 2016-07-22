@@ -1,12 +1,10 @@
 (function(){
 	"use strict";
 	
-	var pg = require('pg');
-	
 	var connectionString = {
 		host: '166.2.126.207',
     	port: 5432,
-    	database: 'imagestats',
+    	database: 'imagestats_10',
     	user: 'postgres',
     	password: '@rsac123'
 	};
@@ -17,11 +15,8 @@
 	var db = pgp(connectionString);
 
 
-	
-
-
 	//query functions
-	function getAllIps(req,res,next) {
+	function getAllIps_10x(req,res,next) {
 		
 		db.any('select * from logs limit 100')
 		.then(function (data) {
@@ -38,13 +33,13 @@
 	}
 
 
-	function getSingleIp(req, res) {
+	function getSingleIp_10x(req, res) {
 		console.log("Single IP");
 	}
 
 	module.exports = {
-		getSingleIp:getSingleIp,
-		getAllIps:getAllIps
+		getSingleIp_10x:getSingleIp_10x,
+		getAllIps_10x:getAllIps_10x
 	};
 
 	
