@@ -16,15 +16,14 @@
 
 
 	//query functions
-	function getAllIps_10x(req,res,next) {
-		
-		db.any('select * from logs limit 100')
+	function getAllIps_10x(req,res,next) {		
+		db.any('select * from logs')
 		.then(function (data) {
 		  res.status(200)
 		    .json({
 		      status: 'success',
 		      data: data,
-		      message: 'Retrieved ALL puppies'
+		      message: 'Retrieved log 10x'
 		    });
 		})
 		.catch(function (err) {

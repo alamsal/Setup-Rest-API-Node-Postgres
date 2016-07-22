@@ -16,15 +16,14 @@
 
 
 	//query functions
-	function getAllIps_9x(req,res,next) {
-		
+	function getAllIps_9x(req,res,next) {		
 		db.any('select * from logs')
 		.then(function (data) {
 		  res.status(200)
 		    .json({
 		      status: 'success',
 		      data: data,
-		      message: 'Retrieved ALL puppies'
+		      message: 'Retrieved logs 9x'
 		    });
 		})
 		.catch(function (err) {
