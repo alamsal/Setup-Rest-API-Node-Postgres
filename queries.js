@@ -1,10 +1,7 @@
 (function(){
 	"use strict";
 	
-	var promise = require ('bluebird');
-	var promiseOptions = {promiseLib:promise};
-
-	var pgPromise = require('pg-promise')(promiseOptions);
+	var pg = require('pg');
 	
 	var connectionString = {
 		host: '166.2.126.207',
@@ -14,46 +11,43 @@
     	password: '@rsac123'
 	};
 
+	var promise = require('bluebird');
+	var options = {promiseLib:promise};
+	var pgp = require('pg-promise')(options);
+	var db = pgp(connectionString);
+
+
 	
-	var database = pgPromise(connectionString);
 
 
 	//query functions
-	function getAllIps(req, res) {
-	  database.any('SELECT logs."timestamp", logs.ip, logs.hostname, logs.status, logs.service, logs.type, logs."time" FROM public.logs ORDER BY logs."timestamp" DESC LIMIT 100 ')
-	    .then(function (data) {
-	      res.status(200)
-	        .json({
-	          status: 'success',
-	          data: 45,
-	          message: 'Retrieved ALL logs'
-	        });
-	    })
-	    .catch(function (err) {
-	      console.log(err);
-	    });
+	function getAllIps(req,res,next) {
+		
+		db.any('select * from logs limit 100')
+		.then(function (data) {
+		  res.status(200)
+		    .json({
+		      status: 'success',
+		      data: data,
+		      message: 'Retrieved ALL puppies'
+		    });
+		})
+		.catch(function (err) {
+		  return next(err);
+		});   
 	}
 
+
 	function getSingleIp(req, res) {
-	  //var ipId = parseInt(req.params.Ip);
-	  database.one('select * from logs LIMIT 100')
-	    .then(function (data) {
-	      res.status(200)
-	        .json({
-	          status: 'success',
-	          data: data,
-	          message: 'Retrieved ONE Ip from Logs'
-	        });
-	    })
-	    .catch(function (err) {
-	      return (err);
-	    });
+		console.log("Single IP");
 	}
 
 	module.exports = {
 		getSingleIp:getSingleIp,
 		getAllIps:getAllIps
 	};
+
+	
 
 
 }());

@@ -14,11 +14,8 @@
 		extended:true
 	}));
 
-
-
-
-
-	var router = require("./routes.js")(app);
+	var routes = require("./routes.js");
+	app.use('/', routes);
 
 	var server = app.listen(server_port,function(){
 		console.log("Server running at localhost:3000");
