@@ -2,11 +2,11 @@
 	"use strict";
 	
 	var connectionString = {
-		host: '166.2.126.207',
+		host: '',
     	port: 5432,
-    	database: 'imagestats_10',
-    	user: 'postgres',
-    	password: '@rsac123'
+    	database: '',
+    	user: '',
+    	password: ''
 	};
 
 	var promise = require('bluebird');
